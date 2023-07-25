@@ -72,3 +72,15 @@ resource "aws_security_group" "web-sg" {
 output "web-address" {
   value = "${aws_instance.web.public_dns}:8080"
 }
+
+output "sg.1" {
+  value = random_pet.sg.id
+}
+
+output "sg.2" {
+  value = random_pet.sg.id
+}
+
+output "sg" {
+  value = random_pet.sg
+}

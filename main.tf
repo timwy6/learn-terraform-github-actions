@@ -73,11 +73,11 @@ output "web-address" {
   value = "${aws_instance.web.public_dns}:8080"
 }
 
-output "sg.1" {
+output "sg_1" {
   value = random_pet.sg.id
 }
 
-output "sg.2" {
+output "sg_2" {
   value = random_pet.sg.id
 }
 

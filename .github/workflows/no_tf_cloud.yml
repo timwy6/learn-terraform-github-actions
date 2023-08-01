@@ -1,0 +1,26 @@
+
+name: "Terrform in GHA local"
+on:
+    push:
+      branches:
+        - main
+    pull_request:
+
+
+jobs:
+    tim-terraform:
+        name: "terraform-name"
+        runs-on: ubuntu-latest
+        steps:
+            - name: step 1 - checkout
+              uses: actions/checkout@v2
+              
+            - name: step 2 - get terraform cli
+              uses: hashicorp/setup-terraform@v2
+
+            - name: step 3 - dummy step
+              id: dummy
+              run: echo `ls`
+            
+
+

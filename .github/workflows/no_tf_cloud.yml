@@ -20,7 +20,7 @@ jobs:
 
             - name: step 3 - dummy step
               id: dummy
-              run: echo `ls` && echo `pwd` && cat /etc/*se
+              run: pwd
 
             - name: step 4 - dummy 2
               id: dummy2

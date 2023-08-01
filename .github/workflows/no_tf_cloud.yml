@@ -24,10 +24,10 @@ jobs:
 
             - name: step 4 - dummy 2
               id: dummy2
-              run: echo ${{ secrets.TF_API_TOKEN }}
+              run: cat ${{ steps.plan.outputs.stdout }}
             
             - name: step 5 - dummy 3
               id: dummy3
-              run: echo ${{ steps.plan.outcome.stdout }}
+              run: cat ${{ steps.plan.outcome.stdout }}
 
 

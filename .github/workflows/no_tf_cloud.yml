@@ -23,7 +23,7 @@ jobs:
               run: terraform init
 
             - id: plan
-              run: terraform plan
+              run: terraform plan -no-color
 
             - name: step 4 - dummy 2
               id: dummy2

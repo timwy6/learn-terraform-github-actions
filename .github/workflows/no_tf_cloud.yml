@@ -24,10 +24,10 @@ jobs:
 
             - name: step 4 - dummy 2
               id: dummy2
-              run: echo ${{ steps.dummy.outputs }}
+              run: echo ${{ steps.dummy.outputs.stdout }}
             
             - name: step 5 - dummy 3
               id: dummy3
-              run: echo ${{ steps.dummy.outcome }}
+              run: echo ${{ steps.dummy.outcome.stdout }}
 
 

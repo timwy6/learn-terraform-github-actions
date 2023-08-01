@@ -20,7 +20,7 @@ jobs:
 
             - name: step 3 - dummy step
               id: dummy
-              run: pwd
+              run: terraform init
 
             - name: step 4 - dummy 2
               id: dummy2

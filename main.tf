@@ -16,7 +16,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 resource "random_pet" "sg" {}
@@ -39,7 +39,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.web-sg.id]
 
   user_data = <<-EOF
@@ -71,4 +71,16 @@ resource "aws_security_group" "web-sg" {
 
 output "web-address" {
   value = "${aws_instance.web.public_dns}:8080"
+}
+
+output "sg_1" {
+  value = random_pet.sg.id
+}
+
+output "sg_2" {
+  value = random_pet.sg.id
+}
+
+output "sg" {
+  value = random_pet.sg
 }

@@ -20,14 +20,32 @@ jobs:
 
             - name: step 3 - dummy step
               id: dummy
-              run: terraform init
+              run: terraform version
 
-            - name: step 4 - dummy 2
+            - name: dummy dummy
               id: dummy2
-              run: cat ${{ steps.plan.outputs.stdout }}
+              run: echo ${{ github.ref }}
+
+            - name: step 4 - tf fmt
+              id: fmt
+              run: terraform fmt -check
             
-            - name: step 5 - dummy 3
-              id: dummy3
-              run: cat ${{ steps.plan.outcome.stdout }}
+            - name: step 5 - tf init
+              id: init
+              run: terraform init
+            
+            - name: step 6 - tf validate
+              id: validate
+              run: terraform validate
+
+            - name: step 7 - tf plan
+              id: plan
+              if: github.event_name == 'pull_request'
+              run: terraform plan
+
+            - name: step 8 - tf apply
+              id: apply
+              if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+              run: terraform apply -auto-approve
 
 

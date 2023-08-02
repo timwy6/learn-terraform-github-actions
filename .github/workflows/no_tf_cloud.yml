@@ -45,7 +45,7 @@ jobs:
             - name: step 7 - tf plan
               id: plan
               if: github.event_name == 'pull_request'
-              run: terraform plan
+              run: terraform plan -lock=false
 
             - name: step 8 - tf apply
               id: apply

@@ -33,6 +33,10 @@ jobs:
             - name: step 4 - tf fmt
               id: fmt
               run: terraform fmt -check
+
+            - name: step x - ll
+              id: dd
+              run: ls -laht
             
             - name: step 5 - tf init
               id: init

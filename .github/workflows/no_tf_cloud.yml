@@ -35,7 +35,7 @@ jobs:
               run: terraform fmt -check
 
             - name: step x - ll
-              id: dd
+              id: ddd
               run: ls -laht
             
             - name: step 5 - tf init

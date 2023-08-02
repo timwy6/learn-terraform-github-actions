@@ -42,6 +42,10 @@ jobs:
               id: validate
               run: terraform validate
 
+            - name: step x - ll
+              id: dd
+              run: ll
+
             - name: step 7 - tf plan
               id: plan
               if: github.event_name == 'pull_request'

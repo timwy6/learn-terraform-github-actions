@@ -44,7 +44,7 @@ jobs:
 
             - name: step x - ll
               id: dd
-              run: ll
+              run: ls -laht
 
             - name: step 7 - tf plan
               id: plan

@@ -53,8 +53,10 @@ jobs:
             - name: step x - 123
               id: multi_commands
               run: | 
-                echo `${{ steps.init.outcome }}`
-                echo `${{ steps.init.outputs }}`
+                echo "`${{ steps.init.outcome }}`"
+                echo "`${{ steps.init.outputs }}`"
+                ls -laht
+                echo "yeah ??"
 
 
             - name: step 7 - tf plan

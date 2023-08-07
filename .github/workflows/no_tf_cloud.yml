@@ -28,7 +28,7 @@ jobs:
 
             - name: dummy dummy
               id: dummy2
-              run: echo ${{ github.ref }}
+              run: echo `${{ github.ref }}`
 
             - name: step 4 - tf fmt
               id: fmt
@@ -48,7 +48,7 @@ jobs:
 
             - name: step x - ll
               id: dd
-              run: ls -laht
+              run: echo `${{ steps.init.outcome }}`
 
             - name: step 7 - tf plan
               id: plan

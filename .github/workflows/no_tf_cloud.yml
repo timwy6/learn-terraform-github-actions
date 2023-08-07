@@ -59,7 +59,7 @@ jobs:
 
             - name: step x - 4321
               id: dd22
-              run: ${{ steps.init.outputs.stdout }}
+              run: echo "${{ steps.init.outputs.stdout }}"
 
 
             - name: step 7 - tf plan

@@ -57,7 +57,8 @@ jobs:
                 echo `${{ steps.init.outputs.stdout }}`
                 ls -laht
                 echo "yeah ??"
-                ${{ steps.init.outputs.stdout }}
+                aa=`${{ steps.init.outputs.stdout }}`
+                echo $aa
 
             - name: step 7 - tf plan
               id: plan

@@ -48,7 +48,14 @@ jobs:
 
             - name: step x - ll
               id: dd
-              run: echo `${{ steps.init.outcome }}`
+              run: echo `${{ steps.init.outcome }}` #  必须加上 ` 才会返回值
+
+            - name: step x - 123
+              id: multi_commands
+              run: | 
+                echo `${{ steps.init.outcome }}`
+                echo `${{ steps.init.outputs }}`
+
 
             - name: step 7 - tf plan
               id: plan

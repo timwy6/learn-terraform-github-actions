@@ -6,7 +6,15 @@ on:
         - main
     pull_request:
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+
+  # 通过  github action 的 VH 来执行 terraform command， 将 tfstate 同 lock 交及 S3 及 dynamodb
+  # 不需要 terraform cloud 来操作
+
+  # 当 tf plan 执行完后，还可以在 PR 上 create comment 将 tf plan的执行结果 输出。
 jobs:
     tim-terraform:
         name: "terraform-name"
@@ -20,7 +28,55 @@ jobs:
 
             - name: step 3 - dummy step
               id: dummy
-              run: echo `ls`
+              run: terraform version
+
+            - name: dummy dummy
+              id: dummy2
+              run: echo `${{ github.ref }}`
+
+            - name: step 4 - tf fmt
+              id: fmt
+              run: terraform fmt -check
+
+            - name: step x - ll
+              id: ddd
+              run: ls -laht
             
+            - name: step 5 - tf init
+              id: init
+              run: terraform init
+            
+            - name: step 6 - tf validate
+              id: validate
+              run: terraform validate
+
+              
+            # steps.init.outcome 就是这步最后执行的结果 success/fail
+            # steps.init.outputs.stdout 就是 这步的 输出啦
+            - name: step x - ll
+              id: dd
+              run: echo `${{ steps.init.outcome }}` #  必须加上 ` 才会返回值
+
+            - name: step x - 123
+              id: multi_commands
+              run: | 
+                echo `${{ steps.init.outputs.stdout }}`
+                ls -laht
+                echo "yeah ??"
+
+            - name: step x - 4321
+              id: dd22
+              run: echo "${{ steps.init.outputs.stdout }}"    # 用双引号 - 也是可以的。
+
+
+            - name: step 7 - tf plan
+              id: plan
+              if: github.event_name == 'pull_request'
+              run: terraform plan
+
+            - name: step 8 - tf apply
+              id: apply
+              if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+              run: terraform apply -auto-approve
 
 

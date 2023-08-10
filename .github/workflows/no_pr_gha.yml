@@ -34,5 +34,9 @@ jobs:
               id: dummy
               run: echo $AWS_ACCESS_KEY_ID && echo $KKK
 
+            - name: step 4 - dummy step
+              id: dummy2
+              run: export AA=$AWS_ACCESS_KEY_ID && echo $AA
+
 
 

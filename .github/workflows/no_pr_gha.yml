@@ -29,7 +29,7 @@ jobs:
 
             - name: step 3 - dummy step
               id: dummy
-              run: echo ${AWS_ACCESS_KEY_ID} && echo $KKK
+              run: echo $AWS_ACCESS_KEY_ID && echo $KKK
 
 
 

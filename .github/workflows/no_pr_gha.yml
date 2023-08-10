@@ -1,13 +1,12 @@
 
 name: "Triager GHA without PR"
 on:
-    create: 
-      branches:
-        - '*'
     push:
       branches:
         - '*'
-
+    create: 
+      branches:
+        - '*'
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

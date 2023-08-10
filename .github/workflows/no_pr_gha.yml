@@ -9,6 +9,7 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  KKK: "ABCD"
 
 
   # 通过  github action 的 VH 来执行 terraform command， 将 tfstate 同 lock 交及 S3 及 dynamodb
@@ -28,7 +29,7 @@ jobs:
 
             - name: step 3 - dummy step
               id: dummy
-              run: echo ${AWS_ACCESS_KEY_ID}
+              run: echo ${AWS_ACCESS_KEY_ID} && echo $KKK
 
 
 

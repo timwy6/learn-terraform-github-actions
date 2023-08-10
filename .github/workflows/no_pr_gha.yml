@@ -1,5 +1,5 @@
 
-name: "Terrform in GHA local"
+name: "Triager GHA without PR"
 on:
     create: 
       branches:
